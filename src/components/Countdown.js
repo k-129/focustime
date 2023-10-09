@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
 import { fontSizes, spacing } from '../utils/sizes';
 import { colors } from '../utils/colors';
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.white,
     padding: spacing.lg,
-    backgroundColor: 'rgba(94, 132, 226, 0.3)',
+    backgroundColor: '#5e84e24d',
   },
 });

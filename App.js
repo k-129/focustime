@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-} from 'react-native';
-import { useKeepAwake } from 'expo-keep-awake';
-import { colors } from './src/utils/colors';
-import { Focus } from './src/features/focus';
-import { Timer } from './src/features/timer';
-import { FocusHistory } from './src/features/FocusHistory';
+import React, { useState } from "react";
+import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
+import { useKeepAwake } from "expo-keep-awake";
+import { colors } from "./src/utils/colors";
+import { Focus } from "./src/features/focus";
+import { Timer } from "./src/features/timer";
+import { FocusHistory } from "./src/features/FocusHistory";
 
 export default function App() {
   useKeepAwake();
@@ -29,7 +22,9 @@ export default function App() {
       ) : (
         <Timer
           focusSubject={currentSubject}
-          onTimerEnd={(subject) => {setHistory([...history, subject])}}
+          onTimerEnd={(subject) => {
+            setHistory([...history, subject]);
+          }}
           clearSubject={() => setCurrentSubject(null)}
         />
       )}
@@ -40,7 +35,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     backgroundColor: colors.darkBlue,
   },
 });

@@ -18,6 +18,9 @@
       "**/*"
     ],
     "ios": {
+      "simulator": {
+        "device": "iPhone 12 Pro"
+      },
       "supportsTablet": true
     },
     "android": {
