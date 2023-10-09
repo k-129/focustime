@@ -5,6 +5,7 @@ import { colors } from "./src/utils/colors";
 import { Focus } from "./src/features/focus";
 import { Timer } from "./src/features/timer";
 import { FocusHistory } from "./src/features/FocusHistory";
+import { Greetings } from './src/components/Greetings'
 
 export default function App() {
   useKeepAwake();
@@ -14,8 +15,10 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {!currentSubject ? (
+      
+      {currentSubject ? (
         <>
+          <Greetings />
           <Focus addSubject={setCurrentSubject} />
           <FocusHistory history={history} />
         </>

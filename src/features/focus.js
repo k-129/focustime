@@ -6,6 +6,7 @@ import {spacing} from '../utils/sizes'
 
 export const Focus = ({ addSubject }) => {
   const [subject, setSubject] = useState(null);
+  
   console.log(subject);
   return (
     <View style={styles.container}>
@@ -16,11 +17,11 @@ export const Focus = ({ addSubject }) => {
           label="What would you like to focus on?"
         />
         <View style={styles.button}>
-          <RoundedButton
-            title="+"
-            size={50}
-            onPress={() => addSubject(subject)}
-          />
+        <RoundedButton
+          title="+"
+          size={50}
+          onPress={() => addSubject(subject)}
+        />
         </View>
       </View>
     </View>

@@ -4,7 +4,7 @@ import { ProgressBar } from 'react-native-paper';
 import { Countdown } from '../components/Countdown';
 import { RoundedButton } from '../components/RoundedButton';
 import { Timing } from './Timing';
-import { spacing } from '../utils/sizes';
+import { fontSizes, spacing } from '../utils/sizes';
 import { colors } from '../utils/colors';
 
 const ONE_SECON_IN_MS = 1000;
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   countdown: {
-    flex: 0.5,
+    flex: 0.57,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -104,9 +104,11 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontSize: fontSizes.lg
   },
   task: {
     color: colors.white,
     textAlign: 'center',
+    fontSize: fontSizes.md
   },
 });

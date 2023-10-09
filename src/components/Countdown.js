@@ -55,10 +55,10 @@ export const Countdown = ({ minutes = 0.1, isPaused, onProgress, onEnd }) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: fontSizes.xxxl,
+    fontSize: (fontSizes.xxxl + fontSizes.lg),
     fontWeight: 'bold',
     color: colors.white,
-    padding: spacing.lg,
+    padding: spacing.xl,
     backgroundColor: '#5e84e24d',
   },
 });
