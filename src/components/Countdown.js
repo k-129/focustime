@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 
 import { fontSizes, spacing } from '../utils/sizes';
 import { colors } from '../utils/colors';
@@ -47,9 +47,11 @@ export const Countdown = ({ minutes = 0.1, isPaused, onProgress, onEnd }) => {
   const minute = Math.floor(millis / 1000 / 60) % 60;
   const seconds = Math.floor(millis / 1000) % 60;
   return (
+    <View style={styles.container}>
     <Text style={styles.text}>
       {formatTime(minute)}:{formatTime(seconds)}
     </Text>
+    </View>
   );
 };
 
@@ -58,7 +60,14 @@ const styles = StyleSheet.create({
     fontSize: (fontSizes.xxxl + fontSizes.lg),
     fontWeight: 'bold',
     color: colors.white,
-    padding: spacing.xl,
-    backgroundColor: '#5e84e24d',
   },
+  container:{
+    flex:0.7,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#5e84e24d',
+    width: 350,
+    height: 180
+
+  }
 });

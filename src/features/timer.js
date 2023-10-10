@@ -7,6 +7,7 @@ import { Timing } from './Timing';
 import { fontSizes, spacing } from '../utils/sizes';
 import { colors } from '../utils/colors';
 
+
 const ONE_SECON_IN_MS = 1000;
 
 const PATTERN = [
@@ -21,6 +22,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress ] = useState(1);
   const [minutes, setMinutes] = useState(0.1);
+  const minute = Math.floor(1000 / 60) % 60;
   
   const onEnd = (reset) =>{
     Vibration.vibrate(PATTERN);
@@ -29,6 +31,14 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
     reset();
     onTimerEnd(focusSubject);
   }
+
+  const handleIncreaseMinute = () => {
+    setMinutes(minutes + 1);
+  };
+  const handleDecreaseMinute = () => {
+    setMinutes(minutes + 1);
+  };
+  
 
 
   return (   
@@ -59,13 +69,19 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
       </View>
 
       <View style={styles.buttonWrapper}>
+      <RoundedButton size={70} title='-' onPress={handleDecreaseMinute}/>
+
         {!isStarted && (
-          <RoundedButton title="start" onPress={() => setIsStarted(true)} />
+          <RoundedButton style={styles.mainButton} title="start" onPress={() => setIsStarted(true)} />
         )}
         {isStarted && (
-          <RoundedButton title="pause" onPress={() => setIsStarted(false)} />
+          <RoundedButton style={styles.mainButton} title="pause" onPress={() => setIsStarted(false)} />
         )}
+
+        <RoundedButton size={70} title='+' onPress={handleIncreaseMinute}/>
+
       </View>
+
       <View style={styles.clearSubjectWrapper}>
         <RoundedButton size={50} title= '-' onPress={clearSubject} />
       </View>
@@ -86,7 +102,8 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingTop: spacing.xxl
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.sm
 
   },
   buttonWrapper: {
@@ -111,4 +128,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: fontSizes.md
   },
+  mainButton:{
+    marginLeft: spacing.xxl,
+    marginRight: spacing.xxl,
+  }
 });

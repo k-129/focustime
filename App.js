@@ -16,7 +16,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       
-      {currentSubject ? (
+      {!currentSubject ? (
         <>
           <Greetings />
           <Focus addSubject={setCurrentSubject} />
