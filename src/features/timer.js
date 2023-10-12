@@ -21,8 +21,7 @@ const PATTERN = [
 export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress ] = useState(1);
-  const [minutes, setMinutes] = useState(0.1);
-  const minute = Math.floor(1000 / 60) % 60;
+  const [minutes, setMinutes] = useState(10);
   
   const onEnd = (reset) =>{
     Vibration.vibrate(PATTERN);
@@ -36,7 +35,8 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
     setMinutes(minutes + 1);
   };
   const handleDecreaseMinute = () => {
-    setMinutes(minutes + 1);
+       setMinutes(minutes - 1);
+
   };
   
 
@@ -69,7 +69,12 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
       </View>
 
       <View style={styles.buttonWrapper}>
-      <RoundedButton size={70} title='-' onPress={handleDecreaseMinute}/>
+        {minutes > 1 ?(
+      <RoundedButton size={70} title='-' onPress={handleDecreaseMinute}/>)
+      :(
+        <RoundedButton size={70} title='-' onPress={()=>{}}/>
+      )
+        }
 
         {!isStarted && (
           <RoundedButton style={styles.mainButton} title="start" onPress={() => setIsStarted(true)} />
@@ -83,7 +88,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
       </View>
 
       <View style={styles.clearSubjectWrapper}>
-        <RoundedButton size={50} title= '-' onPress={clearSubject} />
+        <RoundedButton size={50} title= 'Back' onPress={clearSubject} />
       </View>
     </View>
   );
