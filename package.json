@@ -15,9 +15,11 @@
     "expo-status-bar": "~1.4.2",
     "node": "^20.7.0",
     "react": "18.1.0",
+    "react-dom": "18.1.0",
     "react-native": "0.70.8",
     "react-native-paper": "4.11.2",
-    "react-native-web": "~0.18.9"
+    "react-native-web": "~0.18.9",
+    "watchman": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
