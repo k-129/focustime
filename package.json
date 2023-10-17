@@ -19,6 +19,7 @@
     "react-native": "0.70.8",
     "react-native-paper": "4.11.2",
     "react-native-web": "~0.18.9",
+    "styled-components": "^6.1.0",
     "watchman": "^1.0.0"
   },
   "devDependencies": {
