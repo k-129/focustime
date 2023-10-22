@@ -27,3 +27,5 @@ const styles = (size) => ({
     },
     text: { color: colors.white, fontSize: size / 3 },
   });
+
+  
