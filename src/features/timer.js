@@ -84,7 +84,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
         justifyContent: "center",
         alignItems: "center",
         paddingTop: spacing.sm,
-        paddingLeft:spacing.sm
+        paddingLeft: spacing.sm,
       }}>
       <Ionicons name="md-pause" size={80} color="white" />
     </View>
@@ -98,7 +98,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
         alignItems: "center",
         paddingTop: 5,
       }}>
-      <Ionicons name="md-home" size={25} color="white" />
+      <Ionicons name="md-home" size={23} color="white" />
     </View>
   );
 

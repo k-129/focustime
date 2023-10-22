@@ -67,7 +67,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#5e84e24d',
     width: 350,
-    height: 180
+    height: 180,
+    borderWidth: 3,
+    borderColor: colors.white,
+    borderRadius: 20,
 
   }
 });
