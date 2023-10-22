@@ -17,7 +17,7 @@ export const Greetings = () => {
           </View>
         </View>
       </View>
-      <Text style={styles.title}>Hello Erik!</Text>
+      <Text style={styles.title}>Hello Time Master!</Text>
     </View>
   );
 };
@@ -61,13 +61,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.progressBar,
   },
   image: {
-    width: 250,
-    height: 250,
+    width: 230,
+    height: 230,
     transform: [{ rotate: "-47deg" }],
   },
   title: {
-    paddingTop: spacing.xxl,
-    fontSize: fontSizes.xxl,
+    paddingTop: spacing.xxl + spacing.sm,
+    fontSize: fontSizes.xl,
     color: colors.white,
   },
 });

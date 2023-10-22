@@ -4,6 +4,7 @@ import { ProgressBar } from "react-native-paper";
 import { Countdown } from "../components/Countdown";
 import { RoundedButton } from "../components/RoundedButton";
 import { Timing } from "./Timing";
+import { DialogBox } from "./DialogBox";
 import { fontSizes, spacing } from "../utils/sizes";
 import { colors } from "../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
@@ -22,6 +23,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
   const [minutes, setMinutes] = useState(10);
+  const [isDialogVisible, setIsDialogVisible] = useState(false);
 
   const onEnd = (reset) => {
     Vibration.vibrate(PATTERN);
@@ -36,6 +38,10 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
   };
   const handleDecreaseMinute = () => {
     setMinutes(minutes - 1);
+  };
+
+  const toggleDialog = () => {
+    setIsDialogVisible(true);
   };
 
   const lessTime = (
@@ -123,11 +129,9 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
           style={{ height: spacing.sm }}
         />
       </View>
-
       <View style={styles.timingWrapper}>
         <Timing onChangeTime={setMinutes} />
       </View>
-
       <View style={styles.buttonWrapper}>
         {minutes > 1 ? (
           <RoundedButton
@@ -160,10 +164,19 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
           onPress={handleIncreaseMinute}
         />
       </View>
-
       <View style={styles.clearSubjectWrapper}>
-        <RoundedButton size={50} title={backHome} onPress={clearSubject} />
+        <RoundedButton
+          size={50}
+          title={backHome}
+          onPress={() => setIsDialogVisible(true)}
+        />
       </View>
+      {isDialogVisible && (
+        <DialogBox
+          visible={isDialogVisible}
+          onDismiss={() => setIsDialogVisible(false)}
+        />
+      )}
     </View>
   );
 };

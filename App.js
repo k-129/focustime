@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
+import { PaperProvider } from "react-native-paper";
 import { useKeepAwake } from "expo-keep-awake";
 import { colors } from "./src/utils/colors";
 import { Focus } from "./src/features/focus";
 import { Timer } from "./src/features/timer";
 import { FocusHistory } from "./src/features/FocusHistory";
-import { Greetings } from './src/components/Greetings'
+import { Greetings } from "./src/components/Greetings";
 
 export default function App() {
   useKeepAwake();
@@ -15,7 +16,6 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      
       {!currentSubject ? (
         <>
           <Greetings />
@@ -41,5 +41,4 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     backgroundColor: colors.darkBlue,
   },
-  
 });
