@@ -7,30 +7,29 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
+  Platform,
 } from "react-native";
 import { fontSizes, spacing } from "../utils/sizes";
 import { colors } from "../utils/colors";
 
 export const Greetings = () => {
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.keyboardView}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <View style={styles.innerContainer}>
-            <View style={styles.innerContainer2}>
-              <View style={styles.innerContainer3}>
-                <Image
-                  source={require("../../assets/logo.png")}
-                  style={styles.image}
-                  resizeMode="contain"
-                />
-              </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <View style={styles.innerContainer}>
+          <View style={styles.innerContainer2}>
+            <View style={styles.innerContainer3}>
+              <Image
+                source={require("../../assets/logo.png")}
+                style={styles.image}
+                resizeMode="contain"
+              />
             </View>
           </View>
-          <Text style={styles.title}>Hello Time Master!</Text>
         </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        <Text style={styles.title}>Hello Time Master!</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

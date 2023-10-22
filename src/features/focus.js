@@ -54,4 +54,8 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     flexDirection: "row",
   },
+  keyboardView: {
+    flex: 1,
+  },
+
 });

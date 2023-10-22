@@ -23,23 +23,25 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-        {currentSubject ? (
-            <Timer
-              focusSubject={currentSubject}
-              onTimerEnd={(subject) => {
-                setHistory([...history, subject]);
-              }}
-              clearSubject={() => setCurrentSubject(null)}
-            />
-        ) : (
-          <>
+      {currentSubject ? (
+        <Timer
+          focusSubject={currentSubject}
+          onTimerEnd={(subject) => {
+            setHistory([...history, subject]);
+          }}
+          clearSubject={() => setCurrentSubject(null)}
+        />
+      ) : (
+        <>
+          <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "position" : "height"}>
             <Greetings />
             <Focus addSubject={setCurrentSubject} />
-            <FocusHistory history={history} />
-          </>
-        )}
-          </SafeAreaView>
-
+          </KeyboardAvoidingView>
+          <FocusHistory history={history} />
+        </>
+      )}
+    </SafeAreaView>
   );
 }
 
@@ -48,8 +50,5 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     backgroundColor: colors.darkBlue,
-  },
-  keyboardView: {
-    flex: 1,
   },
 });
