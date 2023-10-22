@@ -22,16 +22,15 @@ export default function App() {
   const [history, setHistory] = useState([]);
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
         {currentSubject ? (
-          <Timer
-            focusSubject={currentSubject}
-            onTimerEnd={(subject) => {
-              setHistory([...history, subject]);
-            }}
-            clearSubject={() => setCurrentSubject(null)}
-          />
+            <Timer
+              focusSubject={currentSubject}
+              onTimerEnd={(subject) => {
+                setHistory([...history, subject]);
+              }}
+              clearSubject={() => setCurrentSubject(null)}
+            />
         ) : (
           <>
             <Greetings />
@@ -39,8 +38,8 @@ export default function App() {
             <FocusHistory history={history} />
           </>
         )}
-      </SafeAreaView>
-    </TouchableWithoutFeedback>
+          </SafeAreaView>
+
   );
 }
 
