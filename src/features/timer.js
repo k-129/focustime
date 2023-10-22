@@ -165,18 +165,8 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
         />
       </View>
       <View style={styles.clearSubjectWrapper}>
-        <RoundedButton
-          size={50}
-          title={backHome}
-          onPress={() => setIsDialogVisible(true)}
-        />
+        <RoundedButton size={50} title={backHome} onPress={clearSubject} />
       </View>
-      {isDialogVisible && (
-        <DialogBox
-          visible={isDialogVisible}
-          onDismiss={() => setIsDialogVisible(false)}
-        />
-      )}
     </View>
   );
 };

@@ -23,28 +23,21 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : null}
-        style={{ flex: 1 }}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          {currentSubject ? (
-            <Timer
-              focusSubject={currentSubject}
-              onTimerEnd={(subject) => {
-                setHistory([...history, subject]);
-              }}
-              clearSubject={() => setCurrentSubject(null)}
-            />
-          ) : (
-            <>
-              <Greetings />
-              <Focus addSubject={setCurrentSubject} />
-            </>
-          )}
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-      <FocusHistory history={history} />
+      {currentSubject ? (
+        <Timer
+          focusSubject={currentSubject}
+          onTimerEnd={(subject) => {
+            setHistory([...history, subject]);
+          }}
+          clearSubject={() => setCurrentSubject(null)}
+        />
+      ) : (
+        <>
+          <Greetings />
+          <Focus addSubject={setCurrentSubject} />
+          <FocusHistory history={history} />
+        </>
+      )}
     </SafeAreaView>
   );
 }
