@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
-import { PaperProvider } from "react-native-paper";
+import {
+  StyleSheet,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import { useKeepAwake } from "expo-keep-awake";
 import { colors } from "./src/utils/colors";
 import { Focus } from "./src/features/focus";
@@ -16,21 +23,28 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {!currentSubject ? (
-        <>
-          <Greetings />
-          <Focus addSubject={setCurrentSubject} />
-          <FocusHistory history={history} />
-        </>
-      ) : (
-        <Timer
-          focusSubject={currentSubject}
-          onTimerEnd={(subject) => {
-            setHistory([...history, subject]);
-          }}
-          clearSubject={() => setCurrentSubject(null)}
-        />
-      )}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : null}
+        style={{ flex: 1 }}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          {currentSubject ? (
+            <Timer
+              focusSubject={currentSubject}
+              onTimerEnd={(subject) => {
+                setHistory([...history, subject]);
+              }}
+              clearSubject={() => setCurrentSubject(null)}
+            />
+          ) : (
+            <>
+              <Greetings />
+              <Focus addSubject={setCurrentSubject} />
+            </>
+          )}
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+      <FocusHistory history={history} />
     </SafeAreaView>
   );
 }
