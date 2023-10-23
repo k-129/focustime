@@ -57,5 +57,4 @@ const styles = StyleSheet.create({
   keyboardView: {
     flex: 1,
   },
-
 });

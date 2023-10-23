@@ -4,7 +4,6 @@ import { ProgressBar } from "react-native-paper";
 import { Countdown } from "../components/Countdown";
 import { RoundedButton } from "../components/RoundedButton";
 import { Timing } from "./Timing";
-import { DialogBox } from "./DialogBox";
 import { fontSizes, spacing } from "../utils/sizes";
 import { colors } from "../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,11 +18,15 @@ const PATTERN = [
   1 * ONE_SECON_IN_MS,
 ];
 
-export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
+export const Timer = ({
+  openModal,
+  focusSubject,
+  clearSubject,
+  onTimerEnd,
+}) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
   const [minutes, setMinutes] = useState(0.1);
-  const [isDialogVisible, setIsDialogVisible] = useState(false);
 
   const onEnd = (reset) => {
     Vibration.vibrate(PATTERN);
@@ -38,10 +41,6 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
   };
   const handleDecreaseMinute = () => {
     setMinutes(minutes - 1);
-  };
-
-  const toggleDialog = () => {
-    setIsDialogVisible(true);
   };
 
   const lessTime = (
@@ -165,7 +164,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
         />
       </View>
       <View style={styles.clearSubjectWrapper}>
-        <RoundedButton size={50} title={backHome} onPress={clearSubject} />
+        <RoundedButton size={50} title={backHome} onPress={openModal} />
       </View>
     </View>
   );

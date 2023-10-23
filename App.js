@@ -5,31 +5,45 @@ import {
   Platform,
   StatusBar,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
 } from "react-native";
 import { useKeepAwake } from "expo-keep-awake";
 import { colors } from "./src/utils/colors";
 import { Focus } from "./src/features/focus";
-import { Timer } from "./src/features/timer";
 import { FocusHistory } from "./src/features/FocusHistory";
 import { Greetings } from "./src/components/Greetings";
+import { FocusTimer } from "./src/components/FocusTimer";
 
 export default function App() {
   useKeepAwake();
 
   const [currentSubject, setCurrentSubject] = useState();
   const [history, setHistory] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const clearCurrentSubject = () => {
+    setCurrentSubject(null);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       {currentSubject ? (
-        <Timer
-          focusSubject={currentSubject}
-          onTimerEnd={(subject) => {
-            setHistory([...history, subject]);
-          }}
-          clearSubject={() => setCurrentSubject(null)}
+        <FocusTimer
+          currentSubject={currentSubject}
+          setCurrentSubject={setCurrentSubject}
+          history={history}
+          setHistory={setHistory}
+          modalVisible={modalVisible}
+          openModal={openModal}
+          closeModal={closeModal}
+          clearCurrentSubject={clearCurrentSubject}
         />
       ) : (
         <>
