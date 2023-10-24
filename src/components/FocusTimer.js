@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Timer } from "../features/timer";
-import { ModalBox } from "../features/ModalBox";
+import { QuitModalBox } from "../features/quitModalBox";
+import { FinishedModalBox } from "../features/finishedModalBox";
 
-export const FocusTimer = ({ currentSubject }) => {
+export const FocusTimer = ({ currentSubject, setCurrentSubject, setHistory, history }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [history, setHistory] = useState([]);
+  const [quitModalVisible, setQuitModalVisible] = useState(false);
 
   return (
     <>
@@ -13,12 +14,19 @@ export const FocusTimer = ({ currentSubject }) => {
         onTimerEnd={(subject) => {
           setHistory([...history, subject]);
         }}
-        openModal={() => setModalVisible(true)}
-        clearSubject={() => currentSubject(null)}
+        openQuitModal={() => setQuitModalVisible(true)}
+        closeModal={() => setModalVisible(false)}
+        openFinishedModal={() => setModalVisible(true)}
       />
-      <ModalBox
+      <QuitModalBox
+        quitModalVisible={quitModalVisible}
+        closeQuitModal={() => setQuitModalVisible(false)}
+        setCurrentSubject={() => setCurrentSubject(null)}
+      />
+      <FinishedModalBox
         modalVisible={modalVisible}
         closeModal={() => setModalVisible(false)}
+        clearSubject={() => setCurrentSubject(null)}
       />
     </>
   );

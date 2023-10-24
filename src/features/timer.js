@@ -19,9 +19,9 @@ const PATTERN = [
 ];
 
 export const Timer = ({
-  openModal,
+  openQuitModal,
+  openFinishedModal,
   focusSubject,
-  clearSubject,
   onTimerEnd,
 }) => {
   const [isStarted, setIsStarted] = useState(false);
@@ -33,6 +33,7 @@ export const Timer = ({
     setIsStarted(false);
     setProgress(1);
     reset();
+    openFinishedModal(true);
     onTimerEnd(focusSubject);
   };
 
@@ -163,9 +164,9 @@ export const Timer = ({
           onPress={handleIncreaseMinute}
         />
       </View>
-      <View style={styles.clearSubjectWrapper}>
-        <RoundedButton size={50} title={backHome} onPress={openModal} />
-      </View>
+        <View style={styles.clearSubjectWrapper}>
+          <RoundedButton size={50} title={backHome} onPress={openQuitModal} />
+        </View>
     </View>
   );
 };

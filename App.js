@@ -20,7 +20,10 @@ export default function App() {
   const [history, setHistory] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const openModal = () => {
+  const openQuitModal = () => {
+    setModalVisible(true);
+  };
+  const openFinishedModal = () => {
     setModalVisible(true);
   };
 
@@ -41,7 +44,8 @@ export default function App() {
           history={history}
           setHistory={setHistory}
           modalVisible={modalVisible}
-          openModal={openModal}
+          openQuitModal={openQuitModal}
+          openFinishedModal={openFinishedModal}
           closeModal={closeModal}
           clearCurrentSubject={clearCurrentSubject}
         />

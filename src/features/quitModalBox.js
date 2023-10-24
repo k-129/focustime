@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { colors } from "../utils/colors";
+import { fontSizes, spacing } from "../utils/sizes";
 
-export const ModalBox = ({ modalVisible, closeModal, setCurrentSubject }) => {
+export const QuitModalBox = ({
+  quitModalVisible,
+  closeQuitModal,
+  setCurrentSubject,
+}) => {
   const onQuit = () => {
-    closeModal();
+    closeQuitModal();
     setCurrentSubject();
   };
   return (
@@ -11,23 +17,25 @@ export const ModalBox = ({ modalVisible, closeModal, setCurrentSubject }) => {
       <Modal
         animationType="slide"
         transparent={true}
-        visible={modalVisible}
+        visible={quitModalVisible}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
-          closeModal();
+          closeQuitModal();
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <Text style={styles.modalText}>
+              Are you sure you want to leave?
+            </Text>
             <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={onQuit}>
-              <Text style={styles.textStyle}>Quit</Text>
+              style={[styles.button, styles.buttonFocus]}
+              onPress={closeQuitModal}>
+              <Text style={styles.textStyle}>Focus!</Text>
             </Pressable>
             <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={closeModal}>
-              <Text style={styles.textStyle}>Focus!</Text>
+              style={[styles.button, styles.buttonQuit]}
+              onPress={onQuit}>
+              <Text style={styles.textStyle}>Quit</Text>
             </Pressable>
           </View>
         </View>
@@ -41,13 +49,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
   },
   modalView: {
-    margin: 20,
-    backgroundColor: "white",
+    width: 300,
+    height: 200,
+    backgroundColor: colors.white,
     borderRadius: 20,
-    padding: 35,
+    justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -59,23 +67,30 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
+    width: 120,
     borderRadius: 20,
-    padding: 10,
+    marginBottom: spacing.sm,
     elevation: 2,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
+  buttonFocus: {
     backgroundColor: "#2196F3",
   },
+  buttonQuit: {
+    backgroundColor: "#FF0000",
+  },
   textStyle: {
-    color: "white",
+    color: colors.white,
     fontWeight: "bold",
     textAlign: "center",
+    fontSize: fontSizes.md,
+    padding: 10,
   },
   modalText: {
-    marginBottom: 15,
+    fontSize: fontSizes.md,
+    marginBottom: spacing.md,
     textAlign: "center",
+    paddingBottom: spacing.sm,
   },
 });
