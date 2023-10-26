@@ -6,6 +6,14 @@ export const fontSizes = {
   xxl: 40,
   xxxl: 80,
 };
+export const fontWeight = {
+  sm: "400",
+  md: "500",
+  lg: "600",
+  xl: "700",
+  xxl: "800",
+  xxxl: "900",
+};
 
 export const spacing = {
   sm: 8,

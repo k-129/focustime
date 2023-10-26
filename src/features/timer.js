@@ -26,7 +26,7 @@ export const Timer = ({
 }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
-  const [minutes, setMinutes] = useState(0.1);
+  const [minutes, setMinutes] = useState(45);
 
   const onEnd = (reset) => {
     Vibration.vibrate(PATTERN);
@@ -164,9 +164,9 @@ export const Timer = ({
           onPress={handleIncreaseMinute}
         />
       </View>
-        <View style={styles.clearSubjectWrapper}>
-          <RoundedButton size={50} title={backHome} onPress={openQuitModal} />
-        </View>
+      <View style={styles.clearSubjectWrapper}>
+        <RoundedButton size={50} title={backHome} onPress={openQuitModal} />
+      </View>
     </View>
   );
 };

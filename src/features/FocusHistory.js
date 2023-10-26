@@ -1,12 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { colors } from "../utils/colors";
 import { fontSizes, spacing } from "../utils/sizes";
+import { useFonts, Teko_400Regular, Teko_300Light } from "@expo-google-fonts/teko";
 
 export const FocusHistory = ({ history }) => {
+  const [fontsLoaded] = useFonts({
+    Teko_400Regular,
+    Teko_300Light
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   if (!history || !history.length) {
     return (
-      <Text style={styles.titleOut}>We haven't focused on anything yet</Text>
+      <Text style={styles.titleOut}>We<Text style={{letterSpacing: spacing.sm}}>&#xFEFF;&#xFEFF;</Text> haven't<Text style={{letterSpacing: spacing.sm}}>&#xFEFF;&#xFEFF;</Text> focused <Text style={{letterSpacing: spacing.sm}}>&#xFEFF;&#xFEFF;</Text>on<Text style={{letterSpacing: spacing.sm}}>&#xFEFF;&#xFEFF;</Text>anything <Text style={{letterSpacing: spacing.sm}}>&#xFEFF;&#xFEFF;</Text>yet</Text>
     );
   }
   const renderItem = ({ item }) => <Text style={styles.item}>- {item}</Text>;
@@ -35,10 +45,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   titleOut: {
+    fontFamily: "Teko_300Light",
     color: colors.white,
-    fontSize: fontSizes.md,
-    fontWeight: "bold",
+    fontSize: fontSizes.lg,
     marginLeft: spacing.md,
     paddingTop: spacing.md,
+    letterSpacing: 1,
+
   },
 });

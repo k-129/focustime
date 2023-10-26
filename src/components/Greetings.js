@@ -4,15 +4,26 @@ import {
   Text,
   StyleSheet,
   Image,
-  KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
-  Platform,
 } from "react-native";
-import { fontSizes, spacing } from "../utils/sizes";
+import { fontSizes, spacing, fontWeight } from "../utils/sizes";
 import { colors } from "../utils/colors";
+import {
+  useFonts,
+  MontserratSubrayada_400Regular,
+  MontserratSubrayada_700Bold
+} from "@expo-google-fonts/montserrat-subrayada";
 
 export const Greetings = () => {
+  const [fontsLoaded] = useFonts({
+    MontserratSubrayada_400Regular,
+    MontserratSubrayada_700Bold
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -77,7 +88,9 @@ const styles = StyleSheet.create({
     transform: [{ rotate: "-47deg" }],
   },
   title: {
-    paddingTop: spacing.xxl + spacing.sm,
+    fontFamily: "MontserratSubrayada_700Bold",
+    fontWeight: fontWeight.lg,
+    paddingTop: spacing.xxl + spacing.lg,
     fontSize: fontSizes.xl,
     color: colors.white,
   },
